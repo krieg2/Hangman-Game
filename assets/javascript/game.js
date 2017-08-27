@@ -29,8 +29,6 @@ document.onkeyup = function(event) {
         }
         showGuesses(guessedLetters);
     }
-
- 
 }
 
 function resetGame(won){
@@ -91,7 +89,7 @@ function createBoard(answer){
     gameBoard.innerHTML = "";
     for(var i=0; i<answer.length; i++){
         gameBoard.innerHTML += 
-          "<div style=\"float:left;margin:20px;\" id=letter_" + i + "> _ </div>";
+          "<div class=\"letter\" id=\"letter_" + i + "\"> _ </div>";
     }
 
     updateTries();

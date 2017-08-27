@@ -1,0 +1,49 @@
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}
+
+body {
+    background-image: url("../images/pexels-photo-188029.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+	font-family: 'Prosto One', cursive;
+	color: white;
+    font-size: 32px;
+}
+
+h1 {
+	font-family: 'Cabin Sketch', cursive;
+	text-align: center;
+	color: #785027;
+    font-size: 58px;
+}
+
+#lastAnswer {
+	font-family: 'Cabin Sketch', cursive;
+	text-align: center;
+	color: blue;
+    font-size: 42px;
+}
+
+.letter {
+	float:left;
+	margin:20px;
+    font-size: 42px;
+}
+
+.boxBorder {
+	border: 3px dotted white;
+}
+
+.footer{
+	font-size: 18px;
+	text-align: center;
+	margin-top: 50px;
+}
