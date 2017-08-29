@@ -8,30 +8,39 @@ createBoard(answer);
 
 
 document.onkeyup = function(event) {
-    var keyPressed = event.key;
 
-    if(!guessedLetters.includes(keyPressed)){
+    var keyPressed = event.key;
+    keyPressed = keyPressed.toLowerCase();
+
+    var regEx = /^[a-z]$/;
+    if(regEx.test(keyPressed) &&
+       !guessedLetters.includes(keyPressed)){
 
         guessedLetters.push(keyPressed);
+        showGuesses(guessedLetters);
 
         if(answer.includes(keyPressed)){
+
             showLetter(keyPressed, answer);
             if(gameCounter===answer.length){
+
             	updateLastAnswer(answer);
             	resetGame(true);
             }
         } else{
+
             tries--;
             updateTries();
+
             if(tries===0){
             	resetGame(false);
             }
         }
-        showGuesses(guessedLetters);
     }
 }
 
 function resetGame(won){
+
     if(won===true){
         wins++;
         updateWins();
@@ -47,15 +56,15 @@ function resetGame(won){
 function chooseGameAnswer(){
 
     var islandList = ["sumatra", "tahiti", "bora bora",
-                      "bali", "maui", "boracay",
-                      "palawan", "jamaica"];
+                      "bali", "maui", "boracay", "aruba",
+                      "palawan", "honolulu", "jamaica"];
 
     var answer = "";
     var index = 0;
     var max = islandList.length -1;
 
     // Random game answer.
-    index = Math.floor(Math.random() * max + 1);
+    index = Math.floor(Math.random() * (max + 1));
     answer = islandList[index];
 
     return answer;
@@ -63,6 +72,7 @@ function chooseGameAnswer(){
 
 
 function showLetter(letter, answer){
+
 	var element;
     for(var i=0; i<answer.length; i++){
         if(answer.charAt(i)===letter){
@@ -74,6 +84,7 @@ function showLetter(letter, answer){
 }
 
 function showGuesses(guessedLetters){
+
 	var element = document.getElementById("letters");
     element.innerText = "";
 
@@ -84,28 +95,39 @@ function showGuesses(guessedLetters){
 }
 
 function createBoard(answer){
+
     var gameBoard = document.getElementById("gameBoard");
 
     gameBoard.innerHTML = "";
     for(var i=0; i<answer.length; i++){
-        gameBoard.innerHTML += 
-          "<div class=\"letter\" id=\"letter_" + i + "\"> _ </div>";
+        // Skip over spaces in the answer.
+        if(answer[i] === " "){
+            gameBoard.innerHTML +=
+              "<div class=\"letter\" id=\"letter_" + i + "\"> </div>";
+              gameCounter++;
+        } else{
+            gameBoard.innerHTML += 
+              "<div class=\"letter\" id=\"letter_" + i + "\"> _ </div>";
+        }
     }
 
     updateTries();
 }
 
 function updateTries(){
+
     var element = document.getElementById("tries");
     element.innerText = tries;
 }
 
 function updateWins(){
+
     var element = document.getElementById("wins");
     element.innerText = wins;
 }
 
 function updateLastAnswer(answer){
+
     var element = document.getElementById("lastAnswer");
     element.innerText = answer;
 }
