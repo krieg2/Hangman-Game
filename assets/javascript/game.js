@@ -62,6 +62,7 @@ function resetGame(won){
     if(won===true){
         wins++;
         updateWins();
+        playSound();
     }
     tries = 14;
     gameCounter = 0;
@@ -154,4 +155,25 @@ function updateLastAnswer(answer){
     var idx = islandList.indexOf(answer);
     var img = document.getElementById("image");
     img.innerHTML = "<img src='assets/images/" + photoList[idx] + "'></>";
+}
+
+function playSound() {
+
+    var mp3s = [
+      "assets/sounds/Ding-ding-ding-sound.mp3",
+      "assets/sounds/Quack-sound-effect.mp3",
+      "assets/sounds/Sea-waves-sound.mp3",
+      "assets/sounds/Ta-da-orchestra-fanfare.mp3",
+      "assets/sounds/Twinkle-sound-effect.mp3"
+    ];
+
+    var max = mp3s.length -1;
+
+    // Choose a random sound.
+    index = Math.floor(Math.random() * (max + 1));
+
+    var audioElement = document.createElement("audio");
+    audioElement.src = mp3s[index];
+
+    audioElement.play();
 }
