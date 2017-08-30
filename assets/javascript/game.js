@@ -1,9 +1,27 @@
 
-var answer = chooseGameAnswer();
 var guessedLetters = [];
 var tries = 14;
 var gameCounter = 0;
 var wins = 0;
+
+var islandList = ["sumatra", "tahiti", "bora bora",
+                  "bali", "maui", "boracay", "aruba",
+                  "palawan", "honolulu", "jamaica"];
+var photoList = [
+  "320px-Flag_of_Indonesia.png",
+  "320px-Flag_of_French_Polynesia.png",
+  "320px-Flag_of_French_Polynesia.png",
+  "320px-Flag_of_Indonesia.png",
+  "320px-Flag_of_the_United_States.png",
+  "320px-Flag_of_the_Philippines.png",
+  "320px-Flag_of_Aruba.png",
+  "320px-Flag_of_the_Philippines.png",
+  "320px-Flag_of_the_United_States.png",
+  "320px-Flag_of_Jamaica.png"
+];
+
+ // Initialize the first game board.
+var answer = chooseGameAnswer();
 createBoard(answer);
 
 
@@ -55,10 +73,6 @@ function resetGame(won){
 
 function chooseGameAnswer(){
 
-    var islandList = ["sumatra", "tahiti", "bora bora",
-                      "bali", "maui", "boracay", "aruba",
-                      "palawan", "honolulu", "jamaica"];
-
     var answer = "";
     var index = 0;
     var max = islandList.length -1;
@@ -89,8 +103,14 @@ function showGuesses(guessedLetters){
     element.innerText = "";
 
     for(var i=0; i<guessedLetters.length; i++){
+
     	letter = guessedLetters[i];
-        element.innerText += letter + "";
+
+        if(element.innerText === ""){
+            element.innerText += letter;
+        } else {
+            element.innerText += ", " + letter;
+        }
     }
 }
 
@@ -103,11 +123,11 @@ function createBoard(answer){
         // Skip over spaces in the answer.
         if(answer[i] === " "){
             gameBoard.innerHTML +=
-              "<div class=\"letter\" id=\"letter_" + i + "\"> </div>";
+              "<div class='letter' id='letter_" + i + "'> </div>";
               gameCounter++;
         } else{
             gameBoard.innerHTML += 
-              "<div class=\"letter\" id=\"letter_" + i + "\"> _ </div>";
+              "<div class='letter' id='letter_" + i + "'> _ </div>";
         }
     }
 
@@ -130,4 +150,8 @@ function updateLastAnswer(answer){
 
     var element = document.getElementById("lastAnswer");
     element.innerText = answer;
+
+    var idx = islandList.indexOf(answer);
+    var img = document.getElementById("image");
+    img.innerHTML = "<img src='assets/images/" + photoList[idx] + "'></>";
 }

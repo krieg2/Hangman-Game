@@ -32,6 +32,10 @@ h1 {
     font-size: 42px;
 }
 
+#image {
+    text-align: center;
+}
+
 .letter {
 	float:left;
 	margin:20px;
