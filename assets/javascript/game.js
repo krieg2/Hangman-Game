@@ -6,7 +6,8 @@ var wins = 0;
 
 var islandList = ["sumatra", "tahiti", "bora bora",
                   "bali", "maui", "boracay", "aruba",
-                  "palawan", "honolulu", "jamaica"];
+                  "palawan", "hawaii", "jamaica", 
+                  "ibiza", "madagascar", "malta"];
 var photoList = [
   "320px-Flag_of_Indonesia.png",
   "320px-Flag_of_French_Polynesia.png",
@@ -17,7 +18,10 @@ var photoList = [
   "320px-Flag_of_Aruba.png",
   "320px-Flag_of_the_Philippines.png",
   "320px-Flag_of_the_United_States.png",
-  "320px-Flag_of_Jamaica.png"
+  "320px-Flag_of_Jamaica.png",
+  "320px-Ibiza_flag.png",
+  "320px-Flag_of_Madagascar.png",
+  "320px-Flag_of_Malta.png"
 ];
 
  // Initialize the first game board.
