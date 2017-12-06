@@ -46,8 +46,8 @@ document.onkeyup = function(event) {
             showLetter(keyPressed, answer);
             if(gameCounter===answer.length){
 
-            	updateLastAnswer(answer);
-            	resetGame(true);
+              updateLastAnswer(answer);
+              resetGame(true);
             }
         } else{
 
@@ -55,7 +55,7 @@ document.onkeyup = function(event) {
             updateTries();
 
             if(tries===0){
-            	resetGame(false);
+              resetGame(false);
             }
         }
     }
@@ -92,7 +92,7 @@ function chooseGameAnswer(){
 
 function showLetter(letter, answer){
 
-	var element;
+  var element;
     for(var i=0; i<answer.length; i++){
         if(answer.charAt(i)===letter){
             element = document.getElementById("letter_" + i);
@@ -104,12 +104,12 @@ function showLetter(letter, answer){
 
 function showGuesses(guessedLetters){
 
-	var element = document.getElementById("letters");
+  var element = document.getElementById("letters");
     element.innerText = "";
 
     for(var i=0; i<guessedLetters.length; i++){
 
-    	letter = guessedLetters[i];
+        letter = guessedLetters[i];
 
         if(element.innerText === ""){
             element.innerText += letter;
